@@ -60,7 +60,7 @@ for n=1,nframes do
     --radius = (1 + math.sin(2 * math.pi * n *timescale)) * 0.5
     radius = 1
     if ((n - 1) % fps == 0) then print((n - 1)) end
-    vid.star(v, periwink, sunless, {0.4, 0.4, 0.4}, radius)
+    vid.star(v, periwink, sunless, {0.4, 0.4, 0.4}, radius, 48)
     vid.unshade_transfer(v)
     vid.text_draw(v, tx, ty, "Hello Muvik!")
     vid.append(v)

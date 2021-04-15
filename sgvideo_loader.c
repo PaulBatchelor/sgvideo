@@ -750,7 +750,8 @@ void sg_video_star(sg_video *v,
                    us_vec3 color,
                    us_vec3 bg,
                    us_vec3 tint,
-                   float radius);
+                   float radius,
+                   int count);
 
 static int l_vg_star(lua_State *L)
 {
@@ -759,14 +760,16 @@ static int l_vg_star(lua_State *L)
     us_vec3 bg;
     us_vec3 tint;
     float radius;
+    int count;
 
     v = check_vg(L, 1);
     color = get_vec3(L, 2);
     bg = get_vec3(L, 3);
     tint = get_vec3(L, 4);
     radius = luaL_checknumber(L, 5);
+    count = luaL_checkinteger(L, 6);
 
-    sg_video_star(v, color, bg, tint, radius);
+    sg_video_star(v, color, bg, tint, radius, count);
 
     return 0;
 }

@@ -85,7 +85,8 @@ void sg_video_star(sg_video *v,
                    us_vec3 color,
                    us_vec3 bg,
                    us_vec3 tint,
-                   float radius)
+                   float radius,
+                   int count)
 {
     int w, h;
     int fps;
@@ -101,7 +102,7 @@ void sg_video_star(sg_video *v,
     ss.bg = bg;
     ss.tint = tint;
     ss.radius = radius;
-    ss.count = 48;
+    ss.count = count;
 
     fps = sg_video_fps(v);
     frame = sg_video_framepos(v);
@@ -127,5 +128,5 @@ void sg_video_startest(sg_video *v)
 
     tint = mkvec3(0.4f, 0.4f, 0.4f);
 
-    sg_video_star(v, color, bg, tint, 1);
+    sg_video_star(v, color, bg, tint, 1, 48);
 }
