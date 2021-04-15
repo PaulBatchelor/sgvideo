@@ -46,7 +46,7 @@ static void draw(vec3 *fragColor, vec2 fragCoord, us_image_data *id)
     uv = mul2s(uv, 15.f);
     uv_n = normalize2(uv);
 
-    d = length2(uv) * (0.8 + 1. * (1 - ss->radius));
+    d = length2(uv) * (0.5 + 1. * (1 - ss->radius));
 
     f = 0.;
 
