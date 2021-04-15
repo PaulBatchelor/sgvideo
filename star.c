@@ -46,7 +46,7 @@ static void draw(vec3 *fragColor, vec2 fragCoord, us_image_data *id)
     uv = mul2s(uv, 15.f);
     uv_n = normalize2(uv);
 
-    d = length2(uv) * (0.4 + 1. * (1 - ss->radius));
+    d = length2(uv) * (0.8 + 1. * (1 - ss->radius));
 
     f = 0.;
 
@@ -68,9 +68,7 @@ static void draw(vec3 *fragColor, vec2 fragCoord, us_image_data *id)
         f = fabsf(fmodf(f + 1.f, 2.f)-1.f);
     }
 
-    f+=1.3-d*(.7+sinf(t+dot(uv_n, mkvec2(1.f, 0.f))*11.f)*(.02f + (1.f - ss->radius)*0.2f));
-    f+=(1.0 - (length2(uv) - 4.*ss->radius))*0.25;
-
+    f+=1.7-d*(.7+sinf(t+dot(uv_n, mkvec2(1.f, 0.f))*11.f)*(.02f + (1.f - ss->radius)*0.2f));
     f = max(f, 0.f);
     c = mix3(ss->bg, ss->color, f);
     c = sub3sv(1.f,
