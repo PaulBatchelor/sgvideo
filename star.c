@@ -42,11 +42,11 @@ static void draw(vec3 *fragColor, vec2 fragCoord, us_image_data *id)
 
     c = mkvec3(0.f, 0.f, 0.25f);
 
-    uv = div2(fragCoord, mkvec2(id->iResolution.x, id->iResolution.x));
+    uv = div2(fragCoord, mkvec2(id->iResolution.y, id->iResolution.y));
     uv = mul2s(uv, 15.f);
     uv_n = normalize2(uv);
 
-    d = length2(uv) * (0.55 + 1. * (1 - ss->radius));
+    d = length2(uv) * (0.5 + 1. * (1 - ss->radius));
 
     f = 0.;
 
