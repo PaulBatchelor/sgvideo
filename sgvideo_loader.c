@@ -774,6 +774,24 @@ static int l_vg_star(lua_State *L)
     return 0;
 }
 
+void sg_video_unshade_fill(sg_video *v,
+                           us_vec3 color,
+                           float alpha);
+
+static int l_vg_unshade_fill(lua_State *L)
+{
+    sg_video *v;
+    us_vec3 color;
+    float alpha;
+
+    v = check_vg(L, 1);
+    color = get_vec3(L, 2);
+    alpha = luaL_checknumber(L, 3);
+
+    sg_video_unshade_fill(v, color, alpha);
+    return 0;
+}
+
 static const luaL_Reg vglib[] = {
     {"new", l_vg_new},
     {"del", l_vg_del},
@@ -832,6 +850,7 @@ static const luaL_Reg vglib[] = {
     {"unshade_clear", l_vg_unshade_clear},
     {"unshade_transfer", l_vg_unshade_transfer},
     {"unshade_test", l_vg_unshade_test},
+    {"unshade_fill", l_vg_unshade_fill},
 
     {NULL, NULL}
 };

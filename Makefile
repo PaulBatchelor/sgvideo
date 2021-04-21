@@ -22,7 +22,7 @@ OBJ += fontstash/sgfontstash.c99
 
 OBJ += lodepng/lodepng.c99
 
-OBJ += unshade.o star.o
+OBJ += unshade.o star.o fill.o
 
 LIBS+=-lx264 -lcairo
 
