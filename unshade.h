@@ -65,6 +65,7 @@ us_vec3 us_mkvec3(float x, float y, float z);
 float us_length2(us_vec2 v);
 
 float us_clamp(float x, float mn, float mx);
+us_vec3 us_clamp3(us_vec3 x, float mn, float mx);
 float us_dot(us_vec2 a, us_vec2 b);
 
 us_vec3 us_add3(us_vec3 a, us_vec3 b);
@@ -99,4 +100,11 @@ void us_draw(us_vec3 *buf,
              int fps,
              void (*draw)(us_vec3 *, us_vec2, us_image_data *),
              void *ud);
+
+void us_write_ppm(us_vec3 *buf, us_vec2 res, const char *filename);
+
+float us_radians(float deg);
+
+float us_smoothstep(float e0, float e1, float x);
+
 #endif

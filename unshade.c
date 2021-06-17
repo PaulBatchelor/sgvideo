@@ -6,6 +6,7 @@
 #include <math.h>
 #include <stdlib.h>
 #include <pthread.h>
+#include <stdio.h>
 
 #include "unshade.h"
 
@@ -36,6 +37,13 @@ float us_clamp(float x, float mn, float mx)
     if (x < mn) return mn;
     if (x > mx) return mx;
     return x;
+}
+
+us_vec3 us_clamp3(us_vec3 v, float mn, float mx)
+{
+    return us_mkvec3(us_clamp(v.x, mn, mx),
+                     us_clamp(v.y, mn, mx),
+                     us_clamp(v.z, mn, mx));
 }
 
 float us_dot(us_vec2 a, us_vec2 b)
@@ -287,4 +295,39 @@ void us_draw(us_vec3 *buf,
     for (t = 0; t < US_MAXTHREADS; t++) {
         pthread_join(thread[t], NULL);
     }
+}
+
+static int mkcolor(float x)
+{
+    return floor(x * 255);
+}
+
+void us_write_ppm(us_vec3 *buf, us_vec2 res, const char *filename)
+{
+    int x, y;
+    FILE *fp;
+
+    fp = fopen(filename, "w");
+    fprintf(fp, "P3\n%d %d\n%d\n", (int)res.x, (int)res.y, 255);
+
+    for (y = 0; y < res.y; y++) {
+        for (x = 0; x < res.x; x++) {
+            int pos;
+
+            pos = y * res.x + x;
+            fprintf(fp, "%d %d %d ",
+                    mkcolor(buf[pos].x),
+                    mkcolor(buf[pos].y),
+                    mkcolor(buf[pos].z));
+        }
+
+        fprintf(fp, "\n");
+    }
+
+    fclose(fp);
+}
+
+float us_radians(float deg)
+{
+    return M_PI * deg / 180.0;
 }
