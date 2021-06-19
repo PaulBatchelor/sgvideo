@@ -331,3 +331,10 @@ float us_radians(float deg)
 {
     return M_PI * deg / 180.0;
 }
+
+float us_smoothstep(float e0, float e1, float x)
+{
+    float t;
+    t = us_clamp((x - e0) / (e1 - e0), 0.0, 1.0);
+    return t * t * (3.0 - 2.0 * t);
+}
