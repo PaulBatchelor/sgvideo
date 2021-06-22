@@ -23,6 +23,10 @@
 /* included after video.h for sg_video def */
 #include "fontstash/sgfontstash.h"
 
+#ifndef M_PI
+#define M_PI 3.14159265358979323846
+#endif
+
 void sg_video_new(sg_video **pv)
 {
     sg_video *v;
