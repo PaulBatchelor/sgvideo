@@ -12,6 +12,7 @@
 #define add2sv us_add2sv
 #define add3 us_add3
 #define sub2 us_sub2
+#define sub3 us_sub3
 #define sub2vs us_sub2vs
 #define sub3sv us_sub3sv
 #define mul2s us_mul2s
@@ -29,6 +30,7 @@
 #define mix us_mix
 #define mix3 us_mix3
 #define normalize2 us_normalize2
+#define smoothstep us_smoothstep
 #endif
 
 /* vector types */
@@ -72,7 +74,10 @@ us_vec3 us_add3(us_vec3 a, us_vec3 b);
 us_vec2 us_add2sv(float s, us_vec2 v);
 
 us_vec2 us_sub2(us_vec2 a, us_vec2 b);
+us_vec3 us_sub3(us_vec3 a, us_vec3 b);
+
 us_vec2 us_sub2vs(us_vec2 a, float s);
+us_vec3 us_sub3sv(float s, us_vec3 v);
 
 us_vec2 us_mul2s(us_vec2 v, float s);
 us_vec3 us_mul3s(us_vec3 v, float s);
@@ -81,7 +86,6 @@ us_vec3 us_mul3(us_vec3 a, us_vec3 b);
 us_vec2 us_div2vs(us_vec2 v, float s);
 us_vec2 us_div2(us_vec2 a, us_vec2 b);
 
-us_vec3 us_sub3sv(float s, us_vec3 v);
 
 float us_min(float x, float y);
 us_vec3 us_min3(us_vec3 v, float s);
@@ -107,4 +111,5 @@ float us_radians(float deg);
 
 float us_smoothstep(float e0, float e1, float x);
 
+float us_sign(float x);
 #endif

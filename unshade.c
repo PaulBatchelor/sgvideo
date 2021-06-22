@@ -61,6 +61,17 @@ us_vec2 us_sub2(us_vec2 a, us_vec2 b)
     return out;
 }
 
+us_vec3 us_sub3(us_vec3 a, us_vec3 b)
+{
+    us_vec3 out;
+
+    out.x = a.x - b.x;
+    out.y = a.y - b.y;
+    out.z = a.z - b.z;
+
+    return out;
+}
+
 us_vec2 us_sub2vs(us_vec2 v, float s)
 {
     us_vec2 out;
@@ -337,4 +348,11 @@ float us_smoothstep(float e0, float e1, float x)
     float t;
     t = us_clamp((x - e0) / (e1 - e0), 0.0, 1.0);
     return t * t * (3.0 - 2.0 * t);
+}
+
+float us_sign(float x)
+{
+    if (x < 0) return -1;
+    else if (x > 0) return 1;
+    return 0;
 }
